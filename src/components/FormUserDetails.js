@@ -11,20 +11,48 @@ export class FormUserDetails extends Component {
   };
 
   render() {
-    const { values } = this.props;
+    const { values, handleChange } = this.props;
     return (
       <MuiThemeProvider>
         <Fragment>
           <AppBar title="Enter User Details" />
-          <TextField 
+          <TextField
             hintText="Enter your first name"
             floatingLabelText="First Name"
-            
+            onChange={handleChange("firstName")}
+            defaultValue={values.firstName}
+          />
+          <br/>
+          <TextField
+            hintText="Enter your last name"
+            floatingLabelText="Last Name"
+            onChange={handleChange("lastName")}
+            defaultValue={values.lastName}
+          />
+          <br/>
+          <TextField
+            hintText="Enter your email"
+            floatingLabelText="Email"
+            onChange={handleChange("email")}
+            defaultValue={values.email}
+          />
+          <br/>
+          <RaisedButton 
+            label="Continue"
+            primary={true}
+            style={styles.button}
+            onClick={this.continue}
           />
         </Fragment>
       </MuiThemeProvider>
     );
   }
+}
+
+const styles = {
+    button: {
+        margin: 15
+    }
 }
 
 export default FormUserDetails;
